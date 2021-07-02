@@ -4,11 +4,11 @@ Desafio Stefanini
 ## Api rest 
 
 Neste projeto foram utilizados:
- -Typscript
- -Node
- -Typeorm
- -Postgresql
- -Jest
+ - Typscript
+ - Node
+ - Typeorm
+ - Postgresql
+ - Jest
  - Swagger
  - Conceitos Solid
  
