@@ -1,0 +1,237 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Stefanini Teste",
+    "version": "0.0.1",
+    "title": "API Stefanini Teste",
+    "contact": {
+      "position": "marcelo_franchini@hotmail.com"
+    }
+  },
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/employees": {
+      "get": {
+        "tags": [
+          "employees"
+        ],
+        "summary": "Retorna os usuários da base",
+        "description": "Você deve estar autenticado para usar esta rota",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/employees"
+              }
+            }
+          },
+          "401": {
+            "description": "Usuário não autenticado"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "employees"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Você deve passar o position e age no body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateUserBody"
+            }
+          }
+        ],
+        "summary": "Cadastra um usuário na base",
+        "description": "",
+        "operationId": "add",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CreateUser"
+              }
+            }
+          },
+          "409": {
+            "description": "Usuário já cadastrado"
+          }
+        }
+      }
+    },
+    "employees/{id}": {
+      "put": {
+        "tags": [
+          "employees"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "id",
+            "description": "Usuário a ser atualizado"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Os dados para serem atualizados devem ser passados no body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateUser"
+            }
+          }
+        ],
+        "summary": "Atualiza o usuário",
+        "description": "",
+        "operationId": "updateClients",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Algo deu errado ao tentar cadastrar p usuário"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "employees"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "id",
+            "description": "usuário a ser deletado",
+            "required": true
+          }
+        ],
+        "summary": "Deleta um usuário",
+        "description": "",
+        "operationId": "deleteClients",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Algo deu errado ao tentar deletar especialista"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "employees": {
+      "type": "object",
+      "required": [
+        "name",
+        "position",
+        "age"
+      ],
+      "properties": {
+        "id": {
+          "type": "integr",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Usuario"
+      }
+    },
+    "CreateUser": {
+      "type": "object",
+      "required": [
+        "position",
+        "age"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        },
+        "age": {
+          "type": "number"
+        }
+      },
+      "xml": {
+        "name": "Usuario"
+      }
+    },
+    "CreateUserBody": {
+      "type": "object",
+      "required": [
+        "position",
+        "age"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        },
+        "age": {
+          "type": "number"
+        }
+      },
+      "xml": {
+        "name": "Usuario"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
