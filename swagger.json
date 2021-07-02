@@ -13,10 +13,10 @@
     "http"
   ],
   "paths": {
-    "/employees": {
+    "/employee": {
       "get": {
         "tags": [
-          "employees"
+          "employee"
         ],
         "summary": "Retorna os usuários da base",
         "description": "Você deve estar autenticado para usar esta rota",
@@ -33,7 +33,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/employees"
+                "$ref": "#/definitions/employee"
               }
             }
           },
@@ -44,7 +44,7 @@
       },
       "post": {
         "tags": [
-          "employees"
+          "employee"
         ],
         "parameters": [
           {
@@ -82,10 +82,10 @@
         }
       }
     },
-    "employees/{id}": {
+    "employee/{id}": {
       "put": {
         "tags": [
-          "employees"
+          "employee"
         ],
         "parameters": [
           {
@@ -123,7 +123,7 @@
       },
       "delete": {
         "tags": [
-          "employees"
+          "employee"
         ],
         "parameters": [
           {
@@ -161,7 +161,7 @@
     }
   },
   "definitions": {
-    "employees": {
+    "employee": {
       "type": "object",
       "required": [
         "name",
